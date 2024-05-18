@@ -1,0 +1,33 @@
+<body>
+
+  <h2>Brasileirão Série B</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Posição</th>
+        <th>Escudo</th>
+        <th>Time</th>
+        <th>Sigla</th>
+        <th>Pontos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--Criando laço ngFor com os dados recebidos da api atrves do objeto tabela e usando o async para mostrar os dados na tabela-->
+      <tr *ngFor="let time of tabela | async">
+        <td>{{time.posicao}}</td>
+        <td class="escudo"><img src="{{time.time.escudo}}"></td>
+        <td>{{time.time.nome_popular}}</td>
+        <td>{{time.time.sigla}}</td>
+        <td>{{time.pontos}}</td>
+      </tr>
+      <!-- Adicione mais linhas conforme necessário -->
+    </tbody>
+  </table>
+
+  <!--Mostrando o aqrquivo json-->
+  <pre>
+  {{tabela | async | json}}
+</pre>
+
+</body>
