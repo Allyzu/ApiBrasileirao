@@ -21,7 +21,7 @@ export class TimeComponentComponent implements OnInit {
   ngOnInit(): void {
     this.router.params.subscribe(params => {
       const posicao = +params['posicao'];
-      this.time = this.campeonatoService.getTimeById(posicao).subscribe(
+      this.time = this.campeonatoService.getTimeByPosicao(posicao).subscribe(
         time => {
           if (time) {
             this.time = time;
