@@ -1,0 +1,45 @@
+<body>
+
+  <h2 *ngIf="!isComponentLoaded">Brasileirão Série B</h2>
+
+  <!-- Use *ngIf para exibir a tabela apenas se nenhum componente foi carregado -->
+  <div class="table-container">
+
+    <table *ngIf="!isComponentLoaded">
+      <thead>
+        <tr>
+          <th>Posição</th>
+          <th>Escudo</th>
+          <th>Time</th>
+          <th>Sigla</th>
+          <th>Pontos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Criando laço ngFor com os dados recebidos da API através do objeto tabela e usando o async para mostrar os dados na tabela -->
+        <tr *ngFor="let time of tabela | async">
+          <td><a [routerLink]="['/time', time.posicao]">{{time.posicao}}</a></td>
+          <td class="escudo"><a [routerLink]="['/time', time.posicao]"><img src="{{time.time.escudo}}"></a></td>
+          <td><a [routerLink]="['/time', time.posicao]">{{time.time.nome_popular}}</a></td>
+          <td><a [routerLink]="['/time', time.posicao]">{{time.time.sigla}}</a></td>
+          <td><a [routerLink]="['/time', time.posicao]">{{time.pontos}}</a></td>
+        </tr>
+        <!-- Adicione mais linhas conforme necessário -->
+      </tbody>
+    </table>
+
+    <router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)"></router-outlet>
+
+
+
+
+    
+
+  </div>
+
+  <!--Mostrando o aqrquivo json-->
+    
+      <!-- {{tabela | async | json}}
+     -->
+
+</body>
