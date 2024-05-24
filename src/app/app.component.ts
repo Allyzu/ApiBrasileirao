@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CampeonatoService } from './services/campeonato.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,14 +7,10 @@ import { CampeonatoService } from './services/campeonato.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  //Criando objeto tabela
-  tabela!:any;
-
-  //Referenciando a pasta campeonato.service para o uso do método get
-  constructor(private campeonatoService:CampeonatoService){}
-
-  //Inicio usando o objeto tabela para receber os dados ja observados da requisição feita com método get na pasta service
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
   ngOnInit(): void {
-    this.tabela = this.campeonatoService.getTabelaSerieB();
+    throw new Error('Method not implemented.');
   }
 }
