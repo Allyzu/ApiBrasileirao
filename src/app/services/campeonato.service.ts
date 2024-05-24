@@ -1,29 +1,40 @@
-import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CampeonatoService {
-  key: string = 'test_b5da7267ff75704abd45e40009611f' ;
+  key: string = 'test_b5da7267ff75704abd45e40009611f';
 
-  //Referenciando o module HttpCliente responsável por fazer as requisições na api
-  constructor(private httpClient:HttpClient) { }
-  //Criando metodo get para receber os dados da api e os obersando-os para retorna-los
-  getTabelaSerieB(): Observable<any>{
+  constructor(private httpClient: HttpClient) { }
 
-    //Pegando autorização do headers para ultilizar os dados recebidos
+  getTabelaSerieB(): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.key}`
     });
-
-    //Const que irei passar os argumentos que quero ultilizar recebidos da api exp: posição do time
-    const requestOptions = { headers: headers};
-
-    //Retornando os dados da api ja observados
+    const requestOptions = { headers: headers };
     return this.httpClient.get<any>('https://api.api-futebol.com.br/v1/campeonatos/14/tabela', requestOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
+  getTimeByPosicao(posicao: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.key}`
+    });
+    return this.httpClient.get<any>(`https://api.api-futebol.com.br/v1/campeonatos/14/tabela`, { headers })
+      .pipe(
+        map(data => data.find((item: any) => item.posicao === posicao)), // Filtrar pelo índice da posição
+        catchError(this.handleError)
+      );
+  }
 
+  private handleError(error: HttpErrorResponse) {
+    console.error('An error occurred:', error.message);
+    return throwError('Something went wrong; please try again later.');
   }
 }
