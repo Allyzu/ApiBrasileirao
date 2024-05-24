@@ -1,0 +1,47 @@
+
+<body>
+   
+      
+    <div *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+      </div>
+      
+      <div *ngIf="time">
+        <div class="content-container">
+          <div class="team-info">
+            <img [src]="time.time.escudo" alt="Escudo">
+            <h2>{{time.time.nome_popular}}</h2>
+          </div>
+          <div class="stats-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Qtd de Jogos</th>
+                  <th>Qtd de Vitórias</th>
+                  <th>Qtd de Empates</th>
+                  <th>Qtd de Derrotas</th>
+                  <th>Gols Pro</th>
+                  <th>Gols Contra</th>
+                  <th>Saldo de Gols</th>
+                  <th>Aproveitamento</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{time.jogos}}</td>
+                  <td>{{time.vitorias}}</td>
+                  <td>{{time.empates}}</td>
+                  <td>{{time.derrotas}}</td>
+                  <td>{{time.gols_pro}}</td>
+                  <td>{{time.gols_contra}}</td>
+                  <td>{{time.saldo_gols}}</td>
+                  <td>{{time.aproveitamento}}%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      
+</body>

@@ -1,0 +1,55 @@
+body {
+    margin: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.team-info {
+    text-align: center;
+}
+
+.team-info img {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+.team-info h2 {
+    font-family: sans-serif;
+    font-weight: 800;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+}
+
+table {
+    margin: 25px 0;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: 800;
+}
