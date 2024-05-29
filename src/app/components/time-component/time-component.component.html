@@ -1,15 +1,13 @@
 
 <body>
-   
-      
-    <div *ngIf="errorMessage" class="error">
+   <div *ngIf="errorMessage" class="error">
         {{ errorMessage }}
       </div>
       
-      <div *ngIf="time">
+      <div *ngIf="time && time.time">
         <div class="content-container">
           <div class="team-info">
-            <img [src]="time.time.escudo" alt="Escudo">
+            <img *ngIf="time.time.escudo" [src]="time.time.escudo" alt="Escudo">
             <h2>{{time.time.nome_popular}}</h2>
           </div>
           <div class="stats-container">
@@ -42,6 +40,4 @@
           </div>
         </div>
       </div>
-      
-      
 </body>
