@@ -10,7 +10,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class TimeComponentComponent implements OnInit {
 
-  time: any;
+  time: any = {};
   errorMessage: string = '';
 
   constructor(
