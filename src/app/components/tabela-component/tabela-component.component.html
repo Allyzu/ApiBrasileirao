@@ -4,7 +4,6 @@
 
   <!-- Use *ngIf para exibir a tabela apenas se nenhum componente foi carregado -->
   <div class="table-container">
-
     <table *ngIf="!isComponentLoaded">
       <thead>
         <tr>
@@ -29,11 +28,6 @@
     </table>
 
     <router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)"></router-outlet>
-
-
-
-
-    
 
   </div>
 
